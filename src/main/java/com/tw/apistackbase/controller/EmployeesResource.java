@@ -32,7 +32,7 @@ public class EmployeesResource {
         return employeeService.getAll();
     }
 
-    @GetMapping(path = "{/id}", produces = {"application/json"})
+    @GetMapping(path = "/{id}", produces = {"application/json"})
     public Employees searchEmployee(@PathVariable String id ) {
         return employeeService.searchEmployee(Integer.parseInt(id));
     }
