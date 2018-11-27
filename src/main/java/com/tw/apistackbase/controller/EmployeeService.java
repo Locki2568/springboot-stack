@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public class EmployeeService {
-    private List employees;
+    private List<Employees> employees;
     public EmployeeService(){
         employees = new ArrayList();
         Employees employees1 = new Employees(0,"Xiaoming", 20, "Male");
@@ -28,15 +28,22 @@ public class EmployeeService {
     }
 
     public Employees searchEmployee(int id){
-        Employees employees = (Employees) this.employees.get(id);
+        Employees employees = this.employees.get(id);
         return employees;
     }
 
-    public List<Employees> initiateEmployee(Employees employees){
-        List<Employees> newList = new ArrayList<>();
-        newList.add(employees);
-        this.employees = newList;
-        return newList;
+    public List<Employees> initiateEmployee(List<Employees> employees){
+        this.employees = employees;
+        return this.employees;
     }
 
+    public void updateEmployee(int targetID, Employees targetEmployee) {
+        for(Employees employee : this.employees){
+            if (employee.getId() == targetID){
+                employee.setAge(targetEmployee.getAge());
+                employee.setGender(targetEmployee.getGender());
+                employee.setName(targetEmployee.getName());
+            }
+        }
+    }
 }

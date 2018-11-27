@@ -37,10 +37,18 @@ public class EmployeesResource {
         return employeeService.searchEmployee(Integer.parseInt(id));
     }
 
-    @PostMapping(produces = {"application/json"})
-    public List<Employees> initiateEmployees(@RequestParam Employees employees){
+    @PostMapping(produces = {"application/json"},consumes = {"application/json"})
+    public List<Employees> initiateEmployees(@RequestBody List<Employees> employees){
     List<Employees> newEmployeesList = employeeService.initiateEmployee(employees);
     return newEmployeesList;
+    }
+
+    @PutMapping(path = "/{id}", produces = {"application/json"}, consumes = {"application/json"})
+    public List<Employees> updateEmployees(@RequestBody Employees employees, @PathVariable String id){
+        int targetID = Integer.parseInt(id);
+        this.employeeService.updateEmployee(targetID, employees);
+        List<Employees> updatedEmployeesList = this.employeeService.getAll();
+        return updatedEmployeesList;
     }
 
 
