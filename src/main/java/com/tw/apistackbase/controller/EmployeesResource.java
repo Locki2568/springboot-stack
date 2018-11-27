@@ -38,13 +38,12 @@ public class EmployeesResource {
     }
 
     @PostMapping(produces = {"application/json"})
-    public List<Employees> search(@RequestParam Employees employees){
-
+    public List<Employees> initiateEmployees(@RequestParam Employees employees){
     List<Employees> newEmployeesList = employeeService.initiateEmployee(employees);
     return newEmployeesList;
     }
 
-    
+
 
     //(@RequestBody Employees employees)
 
