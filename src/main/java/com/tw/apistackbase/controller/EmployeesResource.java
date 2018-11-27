@@ -37,13 +37,14 @@ public class EmployeesResource {
         return employeeService.searchEmployee(Integer.parseInt(id));
     }
 
-    @PostMapping(path = "/{id}",produces = {"application/json"})
-    public Employees search(@RequestParam id){
-        int num = id;
-        employeeService.searchEmployee(id);
+    @PostMapping(produces = {"application/json"})
+    public List<Employees> search(@RequestParam Employees employees){
 
-    return id;
+    List<Employees> newEmployeesList = employeeService.initiateEmployee(employees);
+    return newEmployeesList;
     }
+
+    
 
     //(@RequestBody Employees employees)
 

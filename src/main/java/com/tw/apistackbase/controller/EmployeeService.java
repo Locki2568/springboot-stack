@@ -32,4 +32,11 @@ public class EmployeeService {
         return employees;
     }
 
+    public List<Employees> initiateEmployee(Employees employees){
+        List<Employees> newList = new ArrayList<>();
+        newList.add(employees);
+        this.employees = newList;
+        return newList;
+    }
+
 }
