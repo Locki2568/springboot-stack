@@ -51,8 +51,12 @@ public class EmployeesResource {
         return updatedEmployeesList;
     }
 
-
-
-    //(@RequestBody Employees employees)
+    @DeleteMapping(path = "/{id}", produces = {"application/json"}, consumes = {"application/json"})
+    public List<Employees> deleteEmployees(@PathVariable String id){
+        int targetID = Integer.parseInt(id);
+        this.employeeService.deleteEmployee(targetID);
+        List<Employees> updatedEmployeesList = this.employeeService.getAll();
+        return updatedEmployeesList;
+    }
 
 }

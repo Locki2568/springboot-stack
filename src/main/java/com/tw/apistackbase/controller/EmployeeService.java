@@ -46,4 +46,13 @@ public class EmployeeService {
             }
         }
     }
+
+    public void deleteEmployee(int targetID) {
+        for(Employees employee : this.employees){
+            if (employee.getId() == targetID){
+                this.employees.remove(employee);
+                return;
+            }
+        }
+    }
 }
